@@ -10,6 +10,6 @@ import java.math.BigInteger;
 
 @Repository
 public interface ProductRepo extends JpaRepository<Product, Long> {
-    @Query(value = "select * from product where category_tag_id = :idC order by price desc,name asc ",nativeQuery = true)
+    @Query(value = "select * from product where category_tag_id = :idC order by price desc,lower(name) asc ",nativeQuery = true)
     Iterable<Product> view(@Param("idC") Long idC);
 }
